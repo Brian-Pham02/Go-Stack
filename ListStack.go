@@ -26,22 +26,22 @@ func (ls *ListStack[T]) Push(data T) {
 	ls.list.AddHead(data)
 }
 
-func (ls *ListStack[T]) Pop() T {
-	if ls.IsEmpty() {
-		panic("Empty Stack")
-	}
-
-	return ls.list.RemoveHead()
+func (ls *ListStack[T]) Pop() (T, error) {
+	return ls.list.Pop()
 }
 
-func (ls *ListStack[T]) Peek() T {
-	if ls.IsEmpty() {
-		panic("Empty Stack")
-	}
-
+func (ls *ListStack[T]) Peek() (T, error) {
 	return ls.list.Peek()
 }
 
 func (ls *ListStack[T]) String() string {
 	return ls.list.String()
+}
+
+func (ls *ListStack[T]) GetHead() *ll.Node[T] {
+	return ls.list.GetHeadNode()
+}
+
+func (ls *ListStack[T]) GetModCount() int {
+	return ls.list.ModCount()
 }
